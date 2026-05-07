@@ -1,0 +1,375 @@
+{
+  "run_timestamp": "2026-05-07T20:20:34.529090",
+  "data_dir": "data\\raw",
+  "out_dir": "data\\processed",
+  "patients": [
+    {
+      "patient_id": 0,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 23,
+      "normal_windows": 8616,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.563273,
+        "norm_std_left": 0.582701,
+        "norm_mean_right": 33.663318,
+        "norm_std_right": 0.582203
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_00_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_00_windows.npy"
+    },
+    {
+      "patient_id": 1,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 28,
+      "normal_windows": 8611,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.672544,
+        "norm_std_left": 0.636325,
+        "norm_mean_right": 33.772901,
+        "norm_std_right": 0.636477
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_01_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_01_windows.npy"
+    },
+    {
+      "patient_id": 2,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 31,
+      "normal_windows": 8608,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.595156,
+        "norm_std_left": 0.536489,
+        "norm_mean_right": 33.69518,
+        "norm_std_right": 0.536445
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_02_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_02_windows.npy"
+    },
+    {
+      "patient_id": 3,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 29,
+      "normal_windows": 8610,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 34.520721,
+        "norm_std_left": 0.413283,
+        "norm_mean_right": 34.620877,
+        "norm_std_right": 0.413262
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_03_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_03_windows.npy"
+    },
+    {
+      "patient_id": 4,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 25,
+      "normal_windows": 8614,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.17479,
+        "norm_std_left": 0.585416,
+        "norm_mean_right": 33.274588,
+        "norm_std_right": 0.584945
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_04_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_04_windows.npy"
+    },
+    {
+      "patient_id": 5,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 29,
+      "normal_windows": 8610,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.100009,
+        "norm_std_left": 0.507008,
+        "norm_mean_right": 33.199808,
+        "norm_std_right": 0.506697
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_05_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_05_windows.npy"
+    },
+    {
+      "patient_id": 6,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 25,
+      "normal_windows": 8614,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 34.027265,
+        "norm_std_left": 0.710451,
+        "norm_mean_right": 34.126889,
+        "norm_std_right": 0.710031
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_06_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_06_windows.npy"
+    },
+    {
+      "patient_id": 7,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 30,
+      "normal_windows": 8609,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.500974,
+        "norm_std_left": 0.603697,
+        "norm_mean_right": 33.600911,
+        "norm_std_right": 0.603812
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_07_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_07_windows.npy"
+    },
+    {
+      "patient_id": 8,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 29,
+      "normal_windows": 8610,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 32.631582,
+        "norm_std_left": 0.496563,
+        "norm_mean_right": 32.731847,
+        "norm_std_right": 0.496983
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_08_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_08_windows.npy"
+    },
+    {
+      "patient_id": 9,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 33,
+      "normal_windows": 8606,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.098907,
+        "norm_std_left": 0.612392,
+        "norm_mean_right": 33.198926,
+        "norm_std_right": 0.612685
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_09_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_09_windows.npy"
+    },
+    {
+      "patient_id": 10,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 33,
+      "normal_windows": 8606,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 32.948645,
+        "norm_std_left": 0.544682,
+        "norm_mean_right": 33.049763,
+        "norm_std_right": 0.545065
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_10_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_10_windows.npy"
+    },
+    {
+      "patient_id": 11,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 30,
+      "normal_windows": 8609,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.517651,
+        "norm_std_left": 0.67902,
+        "norm_mean_right": 33.617715,
+        "norm_std_right": 0.679275
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_11_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_11_windows.npy"
+    },
+    {
+      "patient_id": 12,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 32,
+      "normal_windows": 8607,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.497819,
+        "norm_std_left": 0.668908,
+        "norm_mean_right": 33.597267,
+        "norm_std_right": 0.668363
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_12_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_12_windows.npy"
+    },
+    {
+      "patient_id": 13,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 32,
+      "normal_windows": 8607,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 34.413773,
+        "norm_std_left": 0.388289,
+        "norm_mean_right": 34.513423,
+        "norm_std_right": 0.387611
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_13_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_13_windows.npy"
+    },
+    {
+      "patient_id": 14,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 31,
+      "normal_windows": 8608,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.848317,
+        "norm_std_left": 0.501919,
+        "norm_mean_right": 33.948274,
+        "norm_std_right": 0.501919
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_14_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_14_windows.npy"
+    },
+    {
+      "patient_id": 15,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 26,
+      "normal_windows": 8613,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 32.784971,
+        "norm_std_left": 0.521961,
+        "norm_mean_right": 32.885317,
+        "norm_std_right": 0.5217
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_15_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_15_windows.npy"
+    },
+    {
+      "patient_id": 16,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 26,
+      "normal_windows": 8613,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.203477,
+        "norm_std_left": 0.642149,
+        "norm_mean_right": 33.303549,
+        "norm_std_right": 0.642496
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_16_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_16_windows.npy"
+    },
+    {
+      "patient_id": 17,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 25,
+      "normal_windows": 8614,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 34.051013,
+        "norm_std_left": 0.603289,
+        "norm_mean_right": 34.150934,
+        "norm_std_right": 0.603023
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_17_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_17_windows.npy"
+    },
+    {
+      "patient_id": 18,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 24,
+      "normal_windows": 8615,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.284169,
+        "norm_std_left": 0.503383,
+        "norm_mean_right": 33.384222,
+        "norm_std_right": 0.503533
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_18_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_18_windows.npy"
+    },
+    {
+      "patient_id": 19,
+      "rows_input": 259200,
+      "rows_output": 259200,
+      "windows": 8639,
+      "anomaly_windows": 23,
+      "normal_windows": 8616,
+      "segments": 1,
+      "interpolated_rows": 0,
+      "norm_params": {
+        "norm_mean_left": 33.315396,
+        "norm_std_left": 0.653417,
+        "norm_mean_right": 33.415798,
+        "norm_std_right": 0.653745
+      },
+      "cleaned_csv": "data\\processed\\cleaned_csv\\patient_19_cleaned.csv",
+      "npy_file": "data\\processed\\npy\\patient_19_windows.npy"
+    }
+  ],
+  "total_files": 20,
+  "files_accepted": 20,
+  "files_rejected": 0,
+  "total_rows_in": 5184000,
+  "total_rows_out": 5184000,
+  "total_windows": 172780,
+  "rows_quarantined": 0,
+  "elapsed_seconds": 190.51
+}

@@ -1,0 +1,25 @@
+20:20:34 [INFO] M6 ETL Pipeline : Sprint 2
+20:20:34 [INFO] Data dir : data\raw
+20:20:34 [INFO] Output   : data\processed
+20:20:34 [INFO] Patients : 20
+20:20:37 [DEBUG]   patient_00: no gaps detected
+20:20:44 [DEBUG]   patient_01: no gaps detected
+20:20:56 [DEBUG]   patient_02: no gaps detected
+20:21:17 [DEBUG]   patient_03: no gaps detected
+20:21:24 [DEBUG]   patient_04: no gaps detected
+20:21:32 [DEBUG]   patient_05: no gaps detected
+20:21:41 [DEBUG]   patient_06: no gaps detected
+20:21:49 [DEBUG]   patient_07: no gaps detected
+20:21:58 [DEBUG]   patient_08: no gaps detected
+20:22:07 [DEBUG]   patient_09: no gaps detected
+20:22:16 [DEBUG]   patient_10: no gaps detected
+20:22:24 [DEBUG]   patient_11: no gaps detected
+20:22:34 [DEBUG]   patient_12: no gaps detected
+20:22:45 [DEBUG]   patient_13: no gaps detected
+20:22:55 [DEBUG]   patient_14: no gaps detected
+20:23:03 [DEBUG]   patient_15: no gaps detected
+20:23:12 [DEBUG]   patient_16: no gaps detected
+20:23:21 [DEBUG]   patient_17: no gaps detected
+20:23:30 [DEBUG]   patient_18: no gaps detected
+20:23:38 [DEBUG]   patient_19: no gaps detected
+20:23:45 [INFO] DONE in 190.51s | accepted=20, rejected=0, windows=172780
