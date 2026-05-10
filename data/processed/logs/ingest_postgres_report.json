@@ -1,145 +1,144 @@
 {
   "database": "postgresql",
-  "dsn": "postgresql://postgres:postgres@localhost:5434/m6_thermal_tsdb",
-  "total_elapsed_s": 286.63,
+  "total_elapsed_s": 273.37,
   "n_subjects": 20,
   "n_recordings": 20,
   "signals": {
     "table": "signals",
     "total_rows": 5184000,
-    "total_elapsed_s": 203.34,
-    "overall_rows_per_s": 25495.0,
+    "total_elapsed_s": 208.34,
+    "overall_rows_per_s": 24883.0,
     "per_patient": [
       {
         "patient_id": 0,
         "rows": 259200,
-        "elapsed_s": 8.681,
-        "rows_per_s": 29858.0
+        "elapsed_s": 11.068,
+        "rows_per_s": 23420.0
       },
       {
         "patient_id": 1,
         "rows": 259200,
-        "elapsed_s": 9.825,
-        "rows_per_s": 26382.0
+        "elapsed_s": 9.946,
+        "rows_per_s": 26060.0
       },
       {
         "patient_id": 2,
         "rows": 259200,
-        "elapsed_s": 9.554,
-        "rows_per_s": 27129.0
+        "elapsed_s": 10.288,
+        "rows_per_s": 25194.0
       },
       {
         "patient_id": 3,
         "rows": 259200,
-        "elapsed_s": 10.341,
-        "rows_per_s": 25066.0
+        "elapsed_s": 10.051,
+        "rows_per_s": 25789.0
       },
       {
         "patient_id": 4,
         "rows": 259200,
-        "elapsed_s": 10.155,
-        "rows_per_s": 25525.0
+        "elapsed_s": 11.262,
+        "rows_per_s": 23016.0
       },
       {
         "patient_id": 5,
         "rows": 259200,
-        "elapsed_s": 9.365,
-        "rows_per_s": 27678.0
+        "elapsed_s": 10.495,
+        "rows_per_s": 24697.0
       },
       {
         "patient_id": 6,
         "rows": 259200,
-        "elapsed_s": 10.348,
-        "rows_per_s": 25047.0
+        "elapsed_s": 11.044,
+        "rows_per_s": 23470.0
       },
       {
         "patient_id": 7,
         "rows": 259200,
-        "elapsed_s": 9.881,
-        "rows_per_s": 26233.0
+        "elapsed_s": 10.738,
+        "rows_per_s": 24138.0
       },
       {
         "patient_id": 8,
         "rows": 259200,
-        "elapsed_s": 11.197,
-        "rows_per_s": 23148.0
+        "elapsed_s": 11.669,
+        "rows_per_s": 22212.0
       },
       {
         "patient_id": 9,
         "rows": 259200,
-        "elapsed_s": 10.803,
-        "rows_per_s": 23993.0
+        "elapsed_s": 11.259,
+        "rows_per_s": 23021.0
       },
       {
         "patient_id": 10,
         "rows": 259200,
-        "elapsed_s": 10.402,
-        "rows_per_s": 24919.0
+        "elapsed_s": 10.658,
+        "rows_per_s": 24320.0
       },
       {
         "patient_id": 11,
         "rows": 259200,
-        "elapsed_s": 9.364,
-        "rows_per_s": 27680.0
+        "elapsed_s": 9.792,
+        "rows_per_s": 26471.0
       },
       {
         "patient_id": 12,
         "rows": 259200,
-        "elapsed_s": 10.624,
-        "rows_per_s": 24397.0
+        "elapsed_s": 10.839,
+        "rows_per_s": 23913.0
       },
       {
         "patient_id": 13,
         "rows": 259200,
-        "elapsed_s": 10.6,
-        "rows_per_s": 24452.0
+        "elapsed_s": 10.248,
+        "rows_per_s": 25292.0
       },
       {
         "patient_id": 14,
         "rows": 259200,
-        "elapsed_s": 10.66,
-        "rows_per_s": 24314.0
+        "elapsed_s": 10.229,
+        "rows_per_s": 25340.0
       },
       {
         "patient_id": 15,
         "rows": 259200,
-        "elapsed_s": 10.449,
-        "rows_per_s": 24807.0
+        "elapsed_s": 9.202,
+        "rows_per_s": 28166.0
       },
       {
         "patient_id": 16,
         "rows": 259200,
-        "elapsed_s": 10.047,
-        "rows_per_s": 25798.0
+        "elapsed_s": 8.393,
+        "rows_per_s": 30885.0
       },
       {
         "patient_id": 17,
         "rows": 259200,
-        "elapsed_s": 10.809,
-        "rows_per_s": 23980.0
+        "elapsed_s": 8.877,
+        "rows_per_s": 29198.0
       },
       {
         "patient_id": 18,
         "rows": 259200,
-        "elapsed_s": 9.951,
-        "rows_per_s": 26048.0
+        "elapsed_s": 12.124,
+        "rows_per_s": 21379.0
       },
       {
         "patient_id": 19,
         "rows": 259200,
-        "elapsed_s": 10.278,
-        "rows_per_s": 25218.0
+        "elapsed_s": 10.153,
+        "rows_per_s": 25530.0
       }
     ]
   },
   "windows": {
     "table": "windows",
     "total_rows": 172780,
-    "elapsed_s": 5.92,
-    "rows_per_s": 29175.0
+    "elapsed_s": 4.43,
+    "rows_per_s": 39003.0
   },
   "size": {
-    "index_build_s": 0.03,
+    "index_build_s": 0.01,
     "size_before_index": {
       "signals": "735 MB",
       "windows": "17 MB",

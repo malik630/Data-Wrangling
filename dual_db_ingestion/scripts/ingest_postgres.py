@@ -26,14 +26,11 @@ Usage
 -----
   python ingest_postgres.py [--etl-dir PATH] [--dsn DSN] [--patients N]
 
-Defaults
-  --etl-dir   ./etl_output        (root output of etl_pipeline.py)
-  --dsn       postgresql://postgres:postgres@localhost:5432/m6_thermal
-  --patients  20
+  Credentials are loaded from .env automatically (no need to pass --dsn).
 
 Requirements
 ------------
-  pip install psycopg2-binary pandas tqdm
+  pip install psycopg2-binary pandas tqdm python-dotenv
 """
 
 import argparse
@@ -50,6 +47,23 @@ import pandas as pd
 import psycopg2
 from psycopg2.extras import execute_values
 from tqdm import tqdm
+from dotenv import load_dotenv
+
+# ---------------------------------------------------------------------------
+# Load .env
+# ---------------------------------------------------------------------------
+load_dotenv()
+
+def _build_pg_dsn() -> str:
+    host     = os.getenv("PG_HOST",     "localhost")
+    port     = os.getenv("PG_PORT",     "5432")
+    user     = os.getenv("PG_USER",     "postgres")
+    password = os.getenv("PG_PASSWORD", "postgres")
+    db       = os.getenv("PG_DB",       "m6_thermal")
+    return f"postgresql://{user}:{password}@{host}:{port}/{db}"
+
+def _default_etl_dir() -> str:
+    return os.getenv("ETL_DIR", "etl_output")
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -200,8 +214,6 @@ def ingest_signals(conn, etl_dir: Path, max_patients: int) -> dict:
     for csv_path in tqdm(csv_files, desc="signals", unit="patient"):
         pid = int(csv_path.stem.split("_")[1])
         df = pd.read_csv(csv_path, parse_dates=["timestamp"])
-
-        # Ensure boolean is represented as True/False string (psycopg2 safe)
         df["is_interpolated"] = df["is_interpolated"].astype(bool)
 
         rows, elapsed = copy_df_to_table(conn, df, "signals", SIGNALS_COLUMNS)
@@ -230,10 +242,6 @@ def ingest_signals(conn, etl_dir: Path, max_patients: int) -> dict:
 # ---------------------------------------------------------------------------
 
 def ingest_recordings(conn):
-    """
-    Derives segment start/end and row count directly from the already-loaded
-    signals table. No external file needed.
-    """
     sql = """
         INSERT INTO recordings (patient_id, segment_id, segment_start, segment_end, n_rows)
         SELECT
@@ -294,10 +302,6 @@ def ingest_windows(conn, etl_dir: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 def create_indexes_and_measure(conn) -> dict:
-    """
-    Create indexes AFTER bulk load (much faster than incremental).
-    Measure disk size before and after.
-    """
     size_before = {}
     for t in ("signals", "windows", "subjects", "recordings"):
         size_before[t] = table_size_pretty(conn, t)
@@ -341,10 +345,8 @@ def spot_check(conn) -> dict:
         result[table] = n
         log.info(f"  {table:12s} : {n:,} rows")
 
-    # Validate expected counts
-    assert result["subjects"]   == result.get("subjects", 0),   "subjects mismatch"
-    assert result["signals"]    >= 4_000_000,  f"signals too low: {result['signals']:,}"
-    assert result["windows"]    == 172_780,    f"windows expected 172 780, got {result['windows']:,}"
+    assert result["signals"]  >= 4_000_000, f"signals too low: {result['signals']:,}"
+    assert result["windows"]  == 172_780,   f"windows expected 172 780, got {result['windows']:,}"
     log.info("Spot-check PASSED")
     return result
 
@@ -356,16 +358,12 @@ def spot_check(conn) -> dict:
 def parse_args():
     parser = argparse.ArgumentParser(description="T5 – PostgreSQL ingestion")
     parser.add_argument(
-        "--etl-dir", default="etl_output",
-        help="Root output directory of etl_pipeline.py (default: etl_output)"
+        "--etl-dir", default=_default_etl_dir(),
+        help="Root output directory of etl_pipeline.py"
     )
     parser.add_argument(
-        "--dsn",
-        default=os.getenv(
-            "PG_DSN",
-            "postgresql://postgres:postgres@localhost:5432/m6_thermal"
-        ),
-        help="PostgreSQL DSN (or set PG_DSN env var)"
+        "--dsn", default=_build_pg_dsn(),
+        help="PostgreSQL DSN (default: built from .env)"
     )
     parser.add_argument(
         "--patients", type=int, default=20,
@@ -410,11 +408,11 @@ def main():
     log.info("── Stage A : subjects ──────────────────────────")
     n_subjects = ingest_subjects(conn, etl_dir, args.patients)
 
-    # B. signals  (the heavy one)
+    # B. signals
     log.info("── Stage B : signals ───────────────────────────")
     signals_metrics = ingest_signals(conn, etl_dir, args.patients)
 
-    # C. recordings (derived from signals)
+    # C. recordings
     log.info("── Stage C : recordings (derived) ──────────────")
     n_recordings = ingest_recordings(conn)
 
@@ -430,7 +428,6 @@ def main():
     log.info("── Stage F : spot-check ────────────────────────")
     counts = spot_check(conn)
 
-    # Summary report
     total_elapsed = time.perf_counter() - pipeline_start
     report = {
         "database":        "postgresql",
@@ -446,7 +443,6 @@ def main():
 
     report_path = etl_dir / "logs" / "ingest_postgres_report.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
-    import json
     with open(report_path, "w") as f:
         json.dump(report, f, indent=2)
 
