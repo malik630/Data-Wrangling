@@ -1,0 +1,155 @@
+{
+  "database": "timescaledb",
+  "dsn": "postgresql://postgres:postgres@localhost:5434/m6_thermal_tsdb",
+  "total_elapsed_s": 132.48,
+  "n_subjects": 20,
+  "thermal_readings": {
+    "table": "thermal_readings",
+    "total_rows": 5184000,
+    "total_elapsed_s": 72.62,
+    "overall_rows_per_s": 71386.0,
+    "per_patient": [
+      {
+        "patient_id": 0,
+        "rows": 259200,
+        "elapsed_s": 4.001,
+        "rows_per_s": 64783.0
+      },
+      {
+        "patient_id": 1,
+        "rows": 259200,
+        "elapsed_s": 3.442,
+        "rows_per_s": 75308.0
+      },
+      {
+        "patient_id": 2,
+        "rows": 259200,
+        "elapsed_s": 3.467,
+        "rows_per_s": 74757.0
+      },
+      {
+        "patient_id": 3,
+        "rows": 259200,
+        "elapsed_s": 3.535,
+        "rows_per_s": 73327.0
+      },
+      {
+        "patient_id": 4,
+        "rows": 259200,
+        "elapsed_s": 3.582,
+        "rows_per_s": 72371.0
+      },
+      {
+        "patient_id": 5,
+        "rows": 259200,
+        "elapsed_s": 3.696,
+        "rows_per_s": 70129.0
+      },
+      {
+        "patient_id": 6,
+        "rows": 259200,
+        "elapsed_s": 3.455,
+        "rows_per_s": 75025.0
+      },
+      {
+        "patient_id": 7,
+        "rows": 259200,
+        "elapsed_s": 3.578,
+        "rows_per_s": 72445.0
+      },
+      {
+        "patient_id": 8,
+        "rows": 259200,
+        "elapsed_s": 3.577,
+        "rows_per_s": 72456.0
+      },
+      {
+        "patient_id": 9,
+        "rows": 259200,
+        "elapsed_s": 3.644,
+        "rows_per_s": 71126.0
+      },
+      {
+        "patient_id": 10,
+        "rows": 259200,
+        "elapsed_s": 3.625,
+        "rows_per_s": 71500.0
+      },
+      {
+        "patient_id": 11,
+        "rows": 259200,
+        "elapsed_s": 3.46,
+        "rows_per_s": 74921.0
+      },
+      {
+        "patient_id": 12,
+        "rows": 259200,
+        "elapsed_s": 3.749,
+        "rows_per_s": 69142.0
+      },
+      {
+        "patient_id": 13,
+        "rows": 259200,
+        "elapsed_s": 3.713,
+        "rows_per_s": 69803.0
+      },
+      {
+        "patient_id": 14,
+        "rows": 259200,
+        "elapsed_s": 3.619,
+        "rows_per_s": 71627.0
+      },
+      {
+        "patient_id": 15,
+        "rows": 259200,
+        "elapsed_s": 3.724,
+        "rows_per_s": 69605.0
+      },
+      {
+        "patient_id": 16,
+        "rows": 259200,
+        "elapsed_s": 3.805,
+        "rows_per_s": 68130.0
+      },
+      {
+        "patient_id": 17,
+        "rows": 259200,
+        "elapsed_s": 3.613,
+        "rows_per_s": 71743.0
+      },
+      {
+        "patient_id": 18,
+        "rows": 259200,
+        "elapsed_s": 3.497,
+        "rows_per_s": 74129.0
+      },
+      {
+        "patient_id": 19,
+        "rows": 259200,
+        "elapsed_s": 3.839,
+        "rows_per_s": 67515.0
+      }
+    ]
+  },
+  "windows": {
+    "table": "windows_tsdb",
+    "total_rows": 172780,
+    "elapsed_s": 5.94,
+    "rows_per_s": 29104.0
+  },
+  "index_build_s": 0.26,
+  "compression": {
+    "before": "628 MB",
+    "after": "98 MB",
+    "pct_saved": 84.3,
+    "compression_elapsed_s": 40.11
+  },
+  "spot_check": {
+    "row_counts": {
+      "subjects": 20,
+      "thermal_readings": 20736000,
+      "windows_tsdb": 172780
+    },
+    "thermal_readings_bytes": 1292664832
+  }
+}
