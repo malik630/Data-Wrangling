@@ -16,26 +16,20 @@ Tables / hypertables filled
 
 Strategy
 --------
-  • thermal_readings is a TimescaleDB hypertable partitioned by:
-      - time  (6h chunks)
-      - patient_id (4 space partitions)
-  • Bulk load via COPY FROM STDIN chunk by chunk (CHUNK_ROWS rows at a time)
-    to avoid memory exhaustion on 259 200-row patient files.
-  • Compression policy applied AFTER load (compress_segmentby = patient_id).
+  • thermal_readings is a TimescaleDB hypertable partitioned by time.
+  • Bulk load via COPY FROM STDIN chunk by chunk (CHUNK_ROWS rows at a time).
+  • Compression policy applied AFTER load.
   • Measures rows/s, raw disk size, and compressed disk size.
 
 Usage
 -----
   python ingest_tsdb.py [--etl-dir PATH] [--dsn DSN] [--patients N]
 
-Defaults
-  --etl-dir   ./etl_output
-  --dsn       postgresql://postgres:postgres@localhost:5433/m6_thermal_tsdb
-              (TimescaleDB typically runs on port 5433 when alongside PG)
+  Credentials are loaded from .env automatically (no need to pass --dsn).
 
 Requirements
 ------------
-  pip install psycopg2-binary pandas tqdm
+  pip install psycopg2-binary pandas tqdm python-dotenv
 """
 
 import argparse
@@ -51,6 +45,23 @@ import pandas as pd
 import psycopg2
 from psycopg2.extras import execute_values
 from tqdm import tqdm
+from dotenv import load_dotenv
+
+# ---------------------------------------------------------------------------
+# Load .env
+# ---------------------------------------------------------------------------
+load_dotenv()
+
+def _build_tsdb_dsn() -> str:
+    host     = os.getenv("TSDB_HOST",     "localhost")
+    port     = os.getenv("TSDB_PORT",     "5432")
+    user     = os.getenv("TSDB_USER",     "postgres")
+    password = os.getenv("TSDB_PASSWORD", "postgres")
+    db       = os.getenv("TSDB_DB",       "m6_thermal_tsdb")
+    return f"postgresql://{user}:{password}@{host}:{port}/{db}"
+
+def _default_etl_dir() -> str:
+    return os.getenv("ETL_DIR", "etl_output")
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -62,7 +73,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("ingest_tsdb")
 
-CHUNK_ROWS = 50_000  # rows per COPY batch (balance memory vs roundtrips)
+CHUNK_ROWS = 50_000
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -89,11 +100,11 @@ def table_row_count(conn, table: str) -> int:
 
 
 def hypertable_size_bytes(conn, table: str) -> int:
-    """Returns total hypertable size in bytes (data + indexes)."""
     with conn.cursor() as cur:
         cur.execute("SELECT hypertable_size(%s);", (table,))
         row = cur.fetchone()
         return row[0] if row and row[0] else 0
+
 
 def hypertable_compressed_size(conn, table: str) -> dict:
     with conn.cursor() as cur:
@@ -110,11 +121,11 @@ def hypertable_compressed_size(conn, table: str) -> dict:
         """)
         row = cur.fetchone()
         if row:
-            return {"before": row[0], "after": row[1], "pct_saved": float(row[2])}  # ← float()
+            return {"before": row[0], "after": row[1], "pct_saved": float(row[2])}
         return {"before": "N/A", "after": "N/A", "pct_saved": 0}
 
+
 def copy_chunk(conn, df_chunk: pd.DataFrame, table: str, columns: list[str]) -> int:
-    """COPY one chunk into table. Returns rows copied."""
     buf = io.StringIO()
     df_chunk[columns].to_csv(buf, index=False, header=False)
     buf.seek(0)
@@ -209,7 +220,6 @@ def ingest_thermal_readings(conn, etl_dir: Path, max_patients: int) -> dict:
         patient_rows = 0
         patient_time = 0.0
 
-        # Read + load in chunks to control memory
         reader = pd.read_csv(
             csv_path,
             parse_dates=["timestamp"],
@@ -270,7 +280,6 @@ def ingest_windows(conn, etl_dir: Path) -> dict:
     df = pd.read_csv(meta_path, parse_dates=["window_start", "window_end"])
     df["is_interpolated"] = df["is_interpolated"].astype(bool)
 
-    # ← ADD THIS: clear stale data from previous runs
     with conn.cursor() as cur:
         cur.execute("TRUNCATE TABLE windows_tsdb;")
     conn.commit()
@@ -291,7 +300,7 @@ def ingest_windows(conn, etl_dir: Path) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Stage D : Post-load indexes + compression trigger
+# Stage D : Post-load indexes + compression
 # ---------------------------------------------------------------------------
 
 def create_indexes(conn):
@@ -312,11 +321,6 @@ def create_indexes(conn):
 
 
 def trigger_compression(conn) -> dict:
-    """
-    Compress all chunks older than 0 minutes (forces compression of all data).
-    In production the policy handles this automatically; here we do it manually
-    so we can measure the ratio immediately.
-    """
     log.info("Compressing all thermal_readings chunks...")
     t0 = time.perf_counter()
     with conn.cursor() as cur:
@@ -366,24 +370,17 @@ def spot_check_and_size(conn) -> dict:
 
 def parse_args():
     parser = argparse.ArgumentParser(description="T5 – TimescaleDB ingestion")
-    parser.add_argument("--etl-dir", default="etl_output")
-    parser.add_argument(
-        "--dsn",
-        default=os.getenv(
-            "TSDB_DSN",
-            "postgresql://postgres:postgres@localhost:5433/m6_thermal_tsdb"
-        ),
-    )
+    parser.add_argument("--etl-dir", default=_default_etl_dir())
+    parser.add_argument("--dsn", default=_build_tsdb_dsn(),
+                        help="TimescaleDB DSN (default: built from .env)")
     parser.add_argument("--patients", type=int, default=20)
     parser.add_argument(
         "--schema-file",
         default=str(Path(__file__).parent / "sql" / "schema_timescaledb.sql"),
     )
     parser.add_argument("--skip-schema", action="store_true")
-    parser.add_argument(
-        "--skip-compress", action="store_true",
-        help="Skip manual compression trigger (rely on automatic policy)"
-    )
+    parser.add_argument("--skip-compress", action="store_true",
+                        help="Skip manual compression trigger")
     return parser.parse_args()
 
 
@@ -400,7 +397,6 @@ def main():
 
     conn = get_conn(args.dsn)
 
-    # 0. Schema
     if not args.skip_schema:
         schema_file = Path(args.schema_file)
         if not schema_file.exists():
@@ -410,29 +406,23 @@ def main():
 
     pipeline_start = time.perf_counter()
 
-    # A. subjects
     log.info("── Stage A : subjects ──────────────────────────")
     n_subjects = ingest_subjects(conn, etl_dir, args.patients)
 
-    # B. thermal_readings (hypertable)
     log.info("── Stage B : thermal_readings (hypertable) ──────")
     thermal_metrics = ingest_thermal_readings(conn, etl_dir, args.patients)
 
-    # C. windows_tsdb
     log.info("── Stage C : windows_tsdb ──────────────────────")
     windows_metrics = ingest_windows(conn, etl_dir)
 
-    # D. Indexes
     log.info("── Stage D : indexes ───────────────────────────")
     idx_elapsed = create_indexes(conn)
 
-    # E. Compression
     compression_stats = {"skipped": True}
     if not args.skip_compress:
         log.info("── Stage E : compression ───────────────────────")
         compression_stats = trigger_compression(conn)
 
-    # F. Spot-check + size
     log.info("── Stage F : spot-check ────────────────────────")
     check = spot_check_and_size(conn)
 
