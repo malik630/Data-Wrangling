@@ -1,0 +1,17 @@
+query_id,category,db,median_ms,p95_ms,mean_ms,min_ms,max_ms
+BM-R1,Read,PostgreSQL,20.35,24.9,19.92,14.49,25.46
+BM-R1,Read,TimescaleDB,23.67,28.66,23.43,18.6,29.46
+BM-R2,Read,PostgreSQL,1564.58,2919.3,1859.4,1392.35,3223.9
+BM-R2,Read,TimescaleDB,1676.32,2638.28,1909.29,1371.74,2774.47
+BM-A1,Aggregation,PostgreSQL,569.62,771.37,594.69,418.9,793.9
+BM-A1,Aggregation,TimescaleDB,188.19,197.36,178.3,149.59,199.59
+BM-A2,Aggregation,PostgreSQL,1766.29,3819.18,2320.72,1445.15,4113.89
+BM-A2,Aggregation,TimescaleDB,711.45,1915.46,1042.96,608.46,2117.18
+BM-S1,Storage,PostgreSQL,2.52,3.07,2.59,2.25,3.19
+BM-S1,Storage,TimescaleDB,42.69,58.7,46.54,39.32,61.71
+BM-S2,Storage,PostgreSQL,2.25,3.22,2.33,1.75,3.42
+BM-S2,Storage,TimescaleDB,4.46,5.85,4.89,4.35,6.01
+BM-W1,Write,PostgreSQL,1241.27,1544.62,1211.42,836.73,1608.53
+BM-W1,Write,TimescaleDB,211.62,257.77,208.23,141.22,261.08
+BM-W2,Write,PostgreSQL,1286.48,1410.55,1302.42,1231.56,1434.27
+BM-W2,Write,TimescaleDB,371.51,591.74,430.0,338.19,627.13

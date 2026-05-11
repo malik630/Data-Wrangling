@@ -1,147 +1,148 @@
 {
   "database": "timescaledb",
-  "total_elapsed_s": 216.96,
+  "dsn": "postgresql://postgres:postgres@localhost:5433/m6_thermal_tsdb",
+  "total_elapsed_s": 229.16,
   "n_subjects": 20,
   "thermal_readings": {
     "table": "thermal_readings",
     "total_rows": 5184000,
-    "total_elapsed_s": 159.16,
-    "overall_rows_per_s": 32572.0,
+    "total_elapsed_s": 171.05,
+    "overall_rows_per_s": 30308.0,
     "per_patient": [
       {
         "patient_id": 0,
         "rows": 259200,
-        "elapsed_s": 5.632,
-        "rows_per_s": 46026.0
+        "elapsed_s": 10.513,
+        "rows_per_s": 24654.0
       },
       {
         "patient_id": 1,
         "rows": 259200,
-        "elapsed_s": 8.563,
-        "rows_per_s": 30271.0
+        "elapsed_s": 9.289,
+        "rows_per_s": 27903.0
       },
       {
         "patient_id": 2,
         "rows": 259200,
-        "elapsed_s": 9.201,
-        "rows_per_s": 28170.0
+        "elapsed_s": 9.069,
+        "rows_per_s": 28582.0
       },
       {
         "patient_id": 3,
         "rows": 259200,
-        "elapsed_s": 8.624,
-        "rows_per_s": 30055.0
+        "elapsed_s": 8.565,
+        "rows_per_s": 30264.0
       },
       {
         "patient_id": 4,
         "rows": 259200,
-        "elapsed_s": 8.281,
-        "rows_per_s": 31300.0
+        "elapsed_s": 8.418,
+        "rows_per_s": 30791.0
       },
       {
         "patient_id": 5,
         "rows": 259200,
-        "elapsed_s": 9.04,
-        "rows_per_s": 28673.0
+        "elapsed_s": 7.086,
+        "rows_per_s": 36578.0
       },
       {
         "patient_id": 6,
         "rows": 259200,
-        "elapsed_s": 7.406,
-        "rows_per_s": 34998.0
+        "elapsed_s": 6.871,
+        "rows_per_s": 37726.0
       },
       {
         "patient_id": 7,
         "rows": 259200,
-        "elapsed_s": 8.019,
-        "rows_per_s": 32324.0
+        "elapsed_s": 9.481,
+        "rows_per_s": 27339.0
       },
       {
         "patient_id": 8,
         "rows": 259200,
-        "elapsed_s": 8.658,
-        "rows_per_s": 29939.0
+        "elapsed_s": 6.79,
+        "rows_per_s": 38172.0
       },
       {
         "patient_id": 9,
         "rows": 259200,
-        "elapsed_s": 9.696,
-        "rows_per_s": 26732.0
+        "elapsed_s": 6.968,
+        "rows_per_s": 37197.0
       },
       {
         "patient_id": 10,
         "rows": 259200,
-        "elapsed_s": 7.972,
-        "rows_per_s": 32515.0
+        "elapsed_s": 8.613,
+        "rows_per_s": 30096.0
       },
       {
         "patient_id": 11,
         "rows": 259200,
-        "elapsed_s": 7.618,
-        "rows_per_s": 34026.0
+        "elapsed_s": 8.234,
+        "rows_per_s": 31478.0
       },
       {
         "patient_id": 12,
         "rows": 259200,
-        "elapsed_s": 6.729,
-        "rows_per_s": 38518.0
+        "elapsed_s": 8.738,
+        "rows_per_s": 29662.0
       },
       {
         "patient_id": 13,
         "rows": 259200,
-        "elapsed_s": 7.139,
-        "rows_per_s": 36309.0
+        "elapsed_s": 8.183,
+        "rows_per_s": 31674.0
       },
       {
         "patient_id": 14,
         "rows": 259200,
-        "elapsed_s": 9.784,
-        "rows_per_s": 26493.0
+        "elapsed_s": 8.125,
+        "rows_per_s": 31900.0
       },
       {
         "patient_id": 15,
         "rows": 259200,
-        "elapsed_s": 7.645,
-        "rows_per_s": 33903.0
+        "elapsed_s": 10.895,
+        "rows_per_s": 23791.0
       },
       {
         "patient_id": 16,
         "rows": 259200,
-        "elapsed_s": 6.932,
-        "rows_per_s": 37390.0
+        "elapsed_s": 10.864,
+        "rows_per_s": 23859.0
       },
       {
         "patient_id": 17,
         "rows": 259200,
-        "elapsed_s": 7.096,
-        "rows_per_s": 36528.0
+        "elapsed_s": 9.777,
+        "rows_per_s": 26511.0
       },
       {
         "patient_id": 18,
         "rows": 259200,
-        "elapsed_s": 7.608,
-        "rows_per_s": 34071.0
+        "elapsed_s": 7.834,
+        "rows_per_s": 33089.0
       },
       {
         "patient_id": 19,
         "rows": 259200,
-        "elapsed_s": 7.515,
-        "rows_per_s": 34492.0
+        "elapsed_s": 6.733,
+        "rows_per_s": 38499.0
       }
     ]
   },
   "windows": {
     "table": "windows_tsdb",
     "total_rows": 172780,
-    "elapsed_s": 5.37,
-    "rows_per_s": 32155.0
+    "elapsed_s": 9.45,
+    "rows_per_s": 18275.0
   },
-  "index_build_s": 0.17,
+  "index_build_s": 0.02,
   "compression": {
-    "before": "749 MB",
-    "after": "119 MB",
+    "before": "748 MB",
+    "after": "118 MB",
     "pct_saved": 84.2,
-    "compression_elapsed_s": 26.5
+    "compression_elapsed_s": 25.98
   },
   "spot_check": {
     "row_counts": {
@@ -149,6 +150,6 @@
       "thermal_readings": 5184000,
       "windows_tsdb": 172780
     },
-    "thermal_readings_bytes": 125714432
+    "thermal_readings_bytes": 125444096
   }
 }
