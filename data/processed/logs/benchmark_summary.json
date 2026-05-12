@@ -1,0 +1,162 @@
+[
+  {
+    "query_id": "BM-R1",
+    "category": "Read",
+    "db": "PostgreSQL",
+    "median_ms": 20.35,
+    "p95_ms": 24.9,
+    "mean_ms": 19.92,
+    "min_ms": 14.49,
+    "max_ms": 25.46
+  },
+  {
+    "query_id": "BM-R1",
+    "category": "Read",
+    "db": "TimescaleDB",
+    "median_ms": 23.67,
+    "p95_ms": 28.66,
+    "mean_ms": 23.43,
+    "min_ms": 18.6,
+    "max_ms": 29.46
+  },
+  {
+    "query_id": "BM-R2",
+    "category": "Read",
+    "db": "PostgreSQL",
+    "median_ms": 1564.58,
+    "p95_ms": 2919.3,
+    "mean_ms": 1859.4,
+    "min_ms": 1392.35,
+    "max_ms": 3223.9
+  },
+  {
+    "query_id": "BM-R2",
+    "category": "Read",
+    "db": "TimescaleDB",
+    "median_ms": 1676.32,
+    "p95_ms": 2638.28,
+    "mean_ms": 1909.29,
+    "min_ms": 1371.74,
+    "max_ms": 2774.47
+  },
+  {
+    "query_id": "BM-A1",
+    "category": "Aggregation",
+    "db": "PostgreSQL",
+    "median_ms": 569.62,
+    "p95_ms": 771.37,
+    "mean_ms": 594.69,
+    "min_ms": 418.9,
+    "max_ms": 793.9
+  },
+  {
+    "query_id": "BM-A1",
+    "category": "Aggregation",
+    "db": "TimescaleDB",
+    "median_ms": 188.19,
+    "p95_ms": 197.36,
+    "mean_ms": 178.3,
+    "min_ms": 149.59,
+    "max_ms": 199.59
+  },
+  {
+    "query_id": "BM-A2",
+    "category": "Aggregation",
+    "db": "PostgreSQL",
+    "median_ms": 1766.29,
+    "p95_ms": 3819.18,
+    "mean_ms": 2320.72,
+    "min_ms": 1445.15,
+    "max_ms": 4113.89
+  },
+  {
+    "query_id": "BM-A2",
+    "category": "Aggregation",
+    "db": "TimescaleDB",
+    "median_ms": 711.45,
+    "p95_ms": 1915.46,
+    "mean_ms": 1042.96,
+    "min_ms": 608.46,
+    "max_ms": 2117.18
+  },
+  {
+    "query_id": "BM-S1",
+    "category": "Storage",
+    "db": "PostgreSQL",
+    "median_ms": 2.52,
+    "p95_ms": 3.07,
+    "mean_ms": 2.59,
+    "min_ms": 2.25,
+    "max_ms": 3.19
+  },
+  {
+    "query_id": "BM-S1",
+    "category": "Storage",
+    "db": "TimescaleDB",
+    "median_ms": 42.69,
+    "p95_ms": 58.7,
+    "mean_ms": 46.54,
+    "min_ms": 39.32,
+    "max_ms": 61.71
+  },
+  {
+    "query_id": "BM-S2",
+    "category": "Storage",
+    "db": "PostgreSQL",
+    "median_ms": 2.25,
+    "p95_ms": 3.22,
+    "mean_ms": 2.33,
+    "min_ms": 1.75,
+    "max_ms": 3.42
+  },
+  {
+    "query_id": "BM-S2",
+    "category": "Storage",
+    "db": "TimescaleDB",
+    "median_ms": 4.46,
+    "p95_ms": 5.85,
+    "mean_ms": 4.89,
+    "min_ms": 4.35,
+    "max_ms": 6.01
+  },
+  {
+    "query_id": "BM-W1",
+    "category": "Write",
+    "db": "PostgreSQL",
+    "median_ms": 1241.27,
+    "p95_ms": 1544.62,
+    "mean_ms": 1211.42,
+    "min_ms": 836.73,
+    "max_ms": 1608.53
+  },
+  {
+    "query_id": "BM-W1",
+    "category": "Write",
+    "db": "TimescaleDB",
+    "median_ms": 211.62,
+    "p95_ms": 257.77,
+    "mean_ms": 208.23,
+    "min_ms": 141.22,
+    "max_ms": 261.08
+  },
+  {
+    "query_id": "BM-W2",
+    "category": "Write",
+    "db": "PostgreSQL",
+    "median_ms": 1286.48,
+    "p95_ms": 1410.55,
+    "mean_ms": 1302.42,
+    "min_ms": 1231.56,
+    "max_ms": 1434.27
+  },
+  {
+    "query_id": "BM-W2",
+    "category": "Write",
+    "db": "TimescaleDB",
+    "median_ms": 371.51,
+    "p95_ms": 591.74,
+    "mean_ms": 430.0,
+    "min_ms": 338.19,
+    "max_ms": 627.13
+  }
+]
